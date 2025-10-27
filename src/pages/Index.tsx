@@ -17,10 +17,34 @@ const Index = () => {
   ];
 
   const portfolio = [
-    { id: 1, type: 'film', title: 'Короткометражка #1', description: 'Первый опыт всей команды в роли режиссёров' },
-    { id: 2, type: 'music', title: 'EP "Слепое звучание"', description: 'Музыкальный эксперимент, где каждый пробует новый инструмент' },
-    { id: 3, type: 'film', title: 'Документалка о процессе', description: 'История о том, как мы меняемся ролями' },
-    { id: 4, type: 'music', title: 'Live сет', description: 'Импровизационное выступление с ротацией участников' },
+    { 
+      id: 1, 
+      type: 'film', 
+      title: 'Короткометражка #1', 
+      description: 'Первый опыт всей команды в роли режиссёров',
+      image: 'https://cdn.poehali.dev/projects/41351d0f-174e-43d7-b916-6eee00933db3/files/428ec08f-10c2-408f-9350-43c2665ddfd8.jpg'
+    },
+    { 
+      id: 2, 
+      type: 'music', 
+      title: 'EP "Слепое звучание"', 
+      description: 'Музыкальный эксперимент, где каждый пробует новый инструмент',
+      image: 'https://cdn.poehali.dev/projects/41351d0f-174e-43d7-b916-6eee00933db3/files/2d624250-a041-45b3-9b69-53d80ca9d18f.jpg'
+    },
+    { 
+      id: 3, 
+      type: 'film', 
+      title: 'Документалка о процессе', 
+      description: 'История о том, как мы меняемся ролями',
+      image: 'https://cdn.poehali.dev/projects/41351d0f-174e-43d7-b916-6eee00933db3/files/c4c43994-3cca-4359-8928-cb76b82a194a.jpg'
+    },
+    { 
+      id: 4, 
+      type: 'music', 
+      title: 'Live сет', 
+      description: 'Импровизационное выступление с ротацией участников',
+      image: 'https://cdn.poehali.dev/projects/41351d0f-174e-43d7-b916-6eee00933db3/files/c15f01f1-3a8c-4be5-ac9b-29729e89ca1c.jpg'
+    },
   ];
 
   return (
@@ -160,15 +184,16 @@ const Index = () => {
             {portfolio.map((item, index) => (
               <Card 
                 key={item.id} 
-                className="group bg-white text-black border-0 overflow-hidden hover:scale-105 transition-transform cursor-pointer"
+                className="group bg-white text-black border-0 overflow-hidden hover:scale-[1.02] transition-all cursor-pointer"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="h-64 bg-accent flex items-center justify-center border-b-2 border-black">
-                  <Icon 
-                    name={item.type === 'film' ? 'Film' : 'Music'} 
-                    size={64} 
-                    className="opacity-20 group-hover:opacity-40 transition-opacity"
+                <div className="relative h-80 overflow-hidden border-b-2 border-black">
+                  <img 
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-2">
