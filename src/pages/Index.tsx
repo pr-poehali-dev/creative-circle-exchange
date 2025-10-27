@@ -96,36 +96,60 @@ const Index = () => {
       </section>
 
       <section id="team" className="py-20 px-6">
-        <div className="container mx-auto max-w-5xl">
-          <h3 className="font-oswald text-4xl md:text-5xl font-bold mb-12 text-center">Роли в команде</h3>
-          <p className="text-center text-xl mb-12 text-muted-foreground max-w-2xl mx-auto">
-            Выберите роль, чтобы узнать, как каждый из нас пробует себя в ней
+        <div className="container mx-auto max-w-6xl">
+          <h3 className="font-oswald text-4xl md:text-5xl font-bold mb-12 text-center">Команда</h3>
+          <p className="text-center text-xl mb-16 text-muted-foreground max-w-2xl mx-auto">
+            5-7 творцов, каждый из которых постоянно меняет роли. Мы все — режиссёры, актёры, сценаристы, композиторы и диджеи.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-            {roles.map((role) => (
-              <button
-                key={role.id}
-                onClick={() => setSelectedRole(selectedRole === role.id ? null : role.id)}
-                className={`p-8 border-2 transition-all hover:scale-105 ${
-                  selectedRole === role.id
-                    ? 'bg-black text-white border-black'
-                    : 'bg-white border-black hover:bg-accent'
-                }`}
-              >
-                <Icon name={role.icon as any} size={32} className="mx-auto mb-4" />
-                <p className="font-oswald text-lg">{role.name}</p>
-              </button>
-            ))}
-          </div>
-          {selectedRole && (
-            <Card className="p-8 border-black animate-fade-in bg-accent">
-              <p className="text-lg leading-relaxed">
-                Каждый участник кàэкус пробует себя в роли {roles.find(r => r.id === selectedRole)?.name.toLowerCase()}а. 
-                Мы верим, что понять творческий процесс можно только изнутри — побывав на месте 
-                каждого члена команды.
+
+          <div className="mb-20">
+            <div className="relative h-96 md:h-[600px] overflow-hidden border-2 border-black mb-8">
+              <img 
+                src="https://cdn.poehali.dev/projects/41351d0f-174e-43d7-b916-6eee00933db3/files/3556ecb0-639b-405c-beae-1c867e5a1341.jpg"
+                alt="Команда кàэкус"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+            <div className="max-w-3xl mx-auto text-center">
+              <h4 className="font-oswald text-3xl font-bold mb-4">Мы — кàэкус</h4>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Коллектив без иерархии, где каждый имеет равный голос и возможность попробовать себя во всех творческих ролях. 
+                Сегодня ты за камерой, завтра — перед ней. Послезавтра пишешь сценарий или музыку.
               </p>
-            </Card>
-          )}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-oswald text-3xl font-bold mb-8 text-center">Роли в проекте</h4>
+            <p className="text-center text-lg mb-12 text-muted-foreground max-w-2xl mx-auto">
+              Нажмите на роль, чтобы узнать больше о нашем подходе
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+              {roles.map((role) => (
+                <button
+                  key={role.id}
+                  onClick={() => setSelectedRole(selectedRole === role.id ? null : role.id)}
+                  className={`p-8 border-2 transition-all hover:scale-105 ${
+                    selectedRole === role.id
+                      ? 'bg-black text-white border-black'
+                      : 'bg-white border-black hover:bg-accent'
+                  }`}
+                >
+                  <Icon name={role.icon as any} size={32} className="mx-auto mb-4" />
+                  <p className="font-oswald text-lg">{role.name}</p>
+                </button>
+              ))}
+            </div>
+            {selectedRole && (
+              <Card className="p-8 border-black animate-fade-in bg-accent">
+                <p className="text-lg leading-relaxed">
+                  Каждый участник кàэкус пробует себя в роли {roles.find(r => r.id === selectedRole)?.name.toLowerCase()}а. 
+                  Мы верим, что понять творческий процесс можно только изнутри — побывав на месте 
+                  каждого члена команды.
+                </p>
+              </Card>
+            )}
+          </div>
         </div>
       </section>
 
