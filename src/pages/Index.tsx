@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -7,6 +8,7 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const roles = [
     { id: 'director', name: 'Режиссёр', icon: 'Film' },
@@ -184,6 +186,7 @@ const Index = () => {
             {portfolio.map((item, index) => (
               <Card 
                 key={item.id} 
+                onClick={() => navigate(`/project/${item.id}`)}
                 className="group bg-white text-black border-0 overflow-hidden hover:scale-[1.02] transition-all cursor-pointer"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -193,7 +196,11 @@ const Index = () => {
                     alt={item.title}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Icon name="ArrowRight" size={48} className="text-white" />
+                    </div>
+                  </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-2">
